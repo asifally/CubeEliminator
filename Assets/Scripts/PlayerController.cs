@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public AudioClip fireSound;
     public AudioClip hitmarkerSound;
+    public AudioClip damageSound;
 
     private Rigidbody playerRb;
     private GameManager gameManager;
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            playerAudio.PlayOneShot(damageSound);
             gameManager.UpdateHealth(-1);
             Destroy(other.gameObject);
         }

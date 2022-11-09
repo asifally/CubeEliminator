@@ -23,12 +23,7 @@ public class DataManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-#if UNITY_EDITOR
         path = Application.persistentDataPath + "/savefile.json";
-        
-#else
-        path = "/idbfs/cube-eliminator/ladsf4894klaf/savefile.json";
-#endif
         LoadHighScores();
     }
 
@@ -57,9 +52,6 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    // TODO: Create LoadHighScores()
-
-    // TODO: Create SaveHighScore()
     public void SaveHighScores()
     {
         SaveData data = new SaveData();

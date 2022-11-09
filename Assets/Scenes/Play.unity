@@ -2131,7 +2131,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380137445}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1c64bd3a6ecc5c4409e8aa874c7315bf, type: 3}
@@ -3611,6 +3611,10 @@ PrefabInstance:
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+    - target: {fileID: 2843879542493448499, guid: e036fcc9028d2734cb740e36c3cbc719, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7533820b1e28fd740a4fae2fef663b25, type: 3}
     - target: {fileID: 2843879542493448499, guid: e036fcc9028d2734cb740e36c3cbc719, type: 3}
       propertyPath: hitmarkerSound
       value: 
