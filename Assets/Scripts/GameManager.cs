@@ -12,29 +12,28 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI healthText;
-    [SerializeField] GameObject titleScreen;
+    [SerializeField] TextMeshProUGUI difficultyText;
+    [SerializeField] TextMeshProUGUI gameOverScoreText;
+    // [SerializeField] GameObject titleScreen;
     [SerializeField] GameObject gameOverScreen;
     private int score = 0;
     private int health = 5;
     private float spawnRange = 60.0f;
     private float spawnTime = 2f;
 
-    // Start is called before the first frame update
+    private void Awake() {
+        StartGame(DataManager.Instance.Difficulty);
+    }
+
     public void StartGame(int difficulty)
     {
-        titleScreen.SetActive(false);
         isGameActive = true;
-        InvokeRepeating("SpawnEnemy", 0, spawnTime);
+        InvokeRepeating("SpawnEnemy", 0, spawnTime/difficulty);
         scoreText.gameObject.SetActive(true);
         UpdateScore(0);
         healthText.gameObject.SetActive(true);
         UpdateHealth(0);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        SetDifficultyText(difficulty);
     }
 
     void SpawnEnemy()
@@ -66,14 +65,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SetDifficultyText(int difficulty)
+    {
+        if (difficulty == 1)
+        {
+           difficultyText.SetText("Easy");
+        }
+        if (difficulty == 2)
+        {
+            difficultyText.SetText("Medium");
+        }
+        if (difficulty == 3)
+        {
+            difficultyText.SetText("Hard");
+        }
+    }
+
     public void GameOver()
     {
         isGameActive = false;
+        DataManager.Instance.SetHighScore(score);
+        DataManager.Instance.SaveHighScores();
+        gameOverScoreText.SetText(score.ToString());
         gameOverScreen.SetActive(true);
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
