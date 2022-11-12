@@ -5,16 +5,11 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed = 40.0f;
-    
+    protected GameManager gameManager;
+    protected PlayerController playerScript;
     private float range = 65.0f;
 
-    private Rigidbody projectileRb;
-    private GameManager gameManager;
-    private PlayerController playerScript;
-    // Start is called before the first frame update
-    void Start()
-    {
-        projectileRb = GetComponent<Rigidbody>();
+    private void Start() {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
@@ -25,16 +20,6 @@ public class Projectile : MonoBehaviour
         // projectileRb.velocity = transform.forward * speed;
         transform.position += transform.forward * speed * Time.deltaTime;
         CleanUp();
-    }
-
-    private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            playerScript.playerAudio.PlayOneShot(playerScript.hitmarkerSound, 1);
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            gameManager.UpdateScore(1);
-        }
     }
 
     void CleanUp()

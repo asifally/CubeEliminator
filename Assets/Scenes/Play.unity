@@ -3604,6 +3604,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2e501b641f5503e4d9442eb5c3f96f74, type: 2}
     - target: {fileID: 2843879542493448499, guid: e036fcc9028d2734cb740e36c3cbc719, type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843879542493448499, guid: e036fcc9028d2734cb740e36c3cbc719, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 1743005870}

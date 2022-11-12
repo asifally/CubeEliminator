@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
 
     public float speed = 8.0f;
 
-    private GameObject player;
-    private GameManager gameManagerScript;
-    private Rigidbody enemyRb;
+    protected GameObject player;
+    protected GameManager gameManagerScript;
+    protected Rigidbody enemyRb;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         }   
     }
 
-    void MoveTowardsPlayer()
+    public virtual void MoveTowardsPlayer()
     {
         transform.LookAt(player.gameObject.transform);
 
