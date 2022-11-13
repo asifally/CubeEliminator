@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
+    public GameObject healthPowerupPrefab;
     public bool isGameActive;
+    public int powerupDropMultiplier;
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI healthText;
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameOverScoreText;
     // [SerializeField] GameObject titleScreen;
     [SerializeField] GameObject gameOverScreen;
+
     private int score = 0;
     private int health = 5;
     private float spawnRange = 60.0f;
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
+        powerupDropMultiplier = difficulty;
         isGameActive = true;
         InvokeRepeating("SpawnEnemy", 0, spawnTime/difficulty);
         scoreText.gameObject.SetActive(true);
@@ -98,5 +102,10 @@ public class GameManager : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SpawnHealthPowerup(Vector3 position, Quaternion rotation)
+    {
+        Instantiate(healthPowerupPrefab, position, rotation);
     }
 }

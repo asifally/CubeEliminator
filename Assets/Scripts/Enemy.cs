@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     protected GameObject player;
     protected GameManager gameManagerScript;
     protected Rigidbody enemyRb;
+    protected int dropChance = 6;
+    public ParticleSystem explosionParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +36,23 @@ public class Enemy : MonoBehaviour
 
         transform.position += transform.forward * speed * Time.deltaTime;
         // transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 0);
+    }
+
+    public void Explode()
+    {
+        ParticleSystem explosionEffect = Instantiate(explosionParticles, gameObject.transform.position, gameObject.transform.rotation);
+        explosionEffect.transform.position = gameObject.transform.position;
+        explosionEffect.Play();
+    }
+
+    public virtual void PowerupDropChance()
+    {
+        Debug.Log(dropChance);
+        int num = Random.Range(0, dropChance * gameManagerScript.powerupDropMultiplier);
+
+        if (num == 1)
+        {
+            gameManagerScript.SpawnHealthPowerup(gameObject.transform.position, gameObject.transform.rotation);
+        }
     }
 }

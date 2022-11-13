@@ -37,7 +37,6 @@ public class RangedEnemy : Enemy
     float GetDistanceFromPlayer()
     {
         float distanceFromPlayer = Vector3.Distance(player.transform.position, gameObject.transform.position);
-        Debug.Log(distanceFromPlayer);
         return distanceFromPlayer;
     }
 

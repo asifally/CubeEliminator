@@ -83,4 +83,12 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Health"))
+        {
+            gameManager.UpdateHealth(1);
+            Destroy(other.gameObject);
+        }
+    }
 }
