@@ -8,7 +8,7 @@ public class RangedEnemy : Enemy
     [SerializeField] float fireDelay = 0.5f;
     [SerializeField] GameObject enemyProjectilePrefab;
     [SerializeField] Transform firePoint;
-    private float withinPlayerRange = 15.0f;
+    private float withinPlayerRange = 12.0f;
     private bool canShoot = true;
 
     void Update()

@@ -47,7 +47,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void PowerupDropChance()
     {
-        Debug.Log(dropChance);
         int num = Random.Range(0, dropChance * gameManagerScript.powerupDropMultiplier);
 
         if (num == 1)
